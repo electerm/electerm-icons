@@ -127,6 +127,20 @@ npm run dev
 
 MIT © ZHAO Xudong
 
-## Contributing
+## Credits
 
-Feel free to submit issues and pull requests to improve the icon selection or add missing essential file types.
+All icons in this project are sourced from [vscode-icons](https://github.com/vscode-icons/vscode-icons), licensed under the [MIT License](https://github.com/vscode-icons/vscode-icons/blob/master/LICENSE).
+
+```
+Copyright (c) 2016-present Roberto Huertas
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
