@@ -1,6 +1,6 @@
 {
   "name": "electerm-icons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight icon library for electerm with essential file type icons",
   "type": "module",
   "main": "dist/index.js",
