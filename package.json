@@ -1,0 +1,46 @@
+{
+  "name": "electerm-icons",
+  "version": "1.0.0",
+  "description": "Lightweight icon library for electerm with essential file type icons",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "icons/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "clean": "rm -rf dist/",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "keywords": [
+    "electerm",
+    "electerm-icons",
+    "vscode-icons",
+    "file-icons",
+    "typescript"
+  ],
+  "author": "ZHAO Xudong <zxdong@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vitest": "^1.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electerm/electerm-icons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/electerm/electerm-icons/issues"
+  },
+  "homepage": "https://github.com/electerm/electerm-icons#readme"
+}
