@@ -1,6 +1,6 @@
 {
   "name": "electerm-icons",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Lightweight icon library for electerm: essential file type icons plus a curated set of connection icons (OS, server software, databases, clouds, AI vendors, runtimes)",
   "type": "module",
   "main": "dist/index.js",

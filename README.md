@@ -72,7 +72,9 @@ console.log(findConnectionIcons('k8s').map(icon => icon.name));
 ```
 
 The icons are plain self-contained SVGs (no `currentColor`, fixed colours), so they can
-be used straight from an `<img src>` without any build step.
+be used straight from an `<img src>` without any build step. Monochrome marks (macOS,
+OpenAI, GitHub, Vercel, …) are drawn in a mid grey `#808080` instead of black, because an
+`<img>` cannot be recoloured by css and black would vanish on a dark background.
 
 ## Supported File Types
 
