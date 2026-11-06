@@ -173,3 +173,11 @@ export function getIconForFile(fileName: string): string {
 
   return DEFAULT_FILE;
 }
+
+export {
+  connectionIcons,
+  connectionIconGroups,
+  findConnectionIcons,
+  type ConnectionIcon,
+  type ConnectionIconGroup
+} from './connection-icons.js';

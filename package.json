@@ -1,7 +1,7 @@
 {
   "name": "electerm-icons",
-  "version": "1.0.1",
-  "description": "Lightweight icon library for electerm with essential file type icons",
+  "version": "1.1.0",
+  "description": "Lightweight icon library for electerm: essential file type icons plus a curated set of connection icons (OS, server software, databases, clouds, AI vendors, runtimes)",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,6 +21,8 @@
     "electerm-icons",
     "vscode-icons",
     "file-icons",
+    "connection-icons",
+    "brand-icons",
     "typescript"
   ],
   "author": "ZHAO Xudong <zxdong@gmail.com>",

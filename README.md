@@ -1,11 +1,11 @@
 # electerm-icons
 
-A lightweight TypeScript library providing essential file type icons, similar to vscode-icons but with a curated set of the most commonly used icons.
+A lightweight TypeScript library providing essential file type icons plus a curated set of connection icons (operating systems, server software, databases, clouds, AI vendors, runtimes), similar to vscode-icons but with only the icons that are actually used.
 
 ## Features
 
-- 🎯 **Essential Icons Only**: Curated set of 48 most commonly used file type icons
-- 📦 **Lightweight**: Reduced from 1400+ to 48 icons (96.6% size reduction)
+- 🎯 **Essential Icons Only**: 48 file type icons and 95 connection icons
+- 📦 **Lightweight**: 456KB in total, against 7.6MB for the full vscode-icons set
 - 🔧 **TypeScript**: Full TypeScript support with type definitions
 - 🌐 **ES Modules**: Modern ES module support only
 - 📁 **Complete API**: Same interface as vscode-icons for easy migration
@@ -33,6 +33,46 @@ console.log(getIconForFile('unknown.xyz'));     // 'default_file.svg'
 // Get icon for folders
 console.log(getIconForFolder('src'));           // 'default_folder.svg'
 ```
+
+## Connection Icons
+
+Besides file types, the package ships a curated set of icons for *hosts* — the icon a
+bookmark, a bookmark folder or a connection tab shows next to its name.
+
+- `os`: Ubuntu, Debian, CentOS, Red Hat, Fedora, Arch Linux, Rocky Linux, Linux Mint,
+  openSUSE, CloudLinux, Linux, FreeBSD, macOS, Apple, Windows, Android, Raspberry Pi
+- `server`: Docker, Kubernetes, Nginx, Apache HTTP, Traefik, Jenkins, GitLab, GitHub,
+  Grafana, Prometheus, Zabbix, Tomcat, Helm, Rancher, Ansible, Terraform, Vagrant,
+  VMware, Serverless, Terminal
+- `database`: PostgreSQL, MySQL, MariaDB, MongoDB, Redis, Elasticsearch, OpenSearch,
+  Kafka, RabbitMQ, Meilisearch
+- `cloud`: AWS, Azure, Google Cloud, Cloudflare, Heroku, Vercel, Netlify, Linode,
+  Vultr, OpenStack
+- `ai`: OpenAI, Ollama, Anthropic, Claude, Gemini, Hugging Face, Mistral AI, DeepSeek,
+  Qwen, GitHub Copilot, AI SDK
+- `lang`: Python, Node.js, Go, Rust, Java, JavaScript, PHP, Ruby, .NET, Swift, Kotlin
+- `generic`: Server, Database, Folder, Home, Cloud, Locked, Secure, Network, Disk, NAS,
+  Internet, Key, Dashboard, Web, DNS, Archive
+
+Every entry maps to `<icons dir>/<name>.svg`, so a consumer only needs the icons
+directory plus the manifest:
+
+```typescript
+import {
+  connectionIcons,
+  connectionIconGroups,
+  findConnectionIcons
+} from 'electerm-icons';
+
+console.log(connectionIcons[0]);
+// { name: 'ubuntu', label: 'Ubuntu', group: 'os', aliases: [ 'linux' ] }
+
+// search by name, label or alias — 'k8s' finds kubernetes
+console.log(findConnectionIcons('k8s').map(icon => icon.name));
+```
+
+The icons are plain self-contained SVGs (no `currentColor`, fixed colours), so they can
+be used straight from an `<img src>` without any build step.
 
 ## Supported File Types
 
@@ -82,17 +122,39 @@ Returns the appropriate icon filename for a given file.
 #### `getIconForFolder(folderName: string): string`
 Returns the appropriate icon filename for a folder.
 
+#### `findConnectionIcons(keyword: string): ConnectionIcon[]`
+Returns the connection icons whose name, label or alias contains `keyword`
+(case insensitive). An empty keyword returns all of them.
+
 ### Constants
 
 - `DEFAULT_FILE`: Default file icon
 - `DEFAULT_FOLDER`: Default folder icon
+- `connectionIcons`: `ConnectionIcon[]`, the connection icon manifest
+- `connectionIconGroups`: the group ids used by `ConnectionIcon.group`
+
+### Types
+
+```typescript
+type ConnectionIconGroup =
+  | 'os' | 'server' | 'database' | 'cloud' | 'ai' | 'lang' | 'generic'
+
+interface ConnectionIcon {
+  /** file name in the icons directory, without the .svg extension */
+  name: string
+  label: string
+  group: ConnectionIconGroup
+  /** extra search terms, e.g. k8s for kubernetes */
+  aliases?: string[]
+}
+```
 
 ## Size Comparison
 
 | Library | Icons | Size | Use Case |
 |---------|-------|------|----------|
-| vscode-icons | 1400+ | 7.7MB | Full IDE support |
-| electerm-icons | 48 | ~0.14MB | Essential files only |
+| vscode-icons | 1700+ | 7.6MB | Full IDE support |
+| electerm-icons | 143 | 456KB | File types + connection icons |
 
 ## Migration from vscode-icons
 
@@ -129,7 +191,7 @@ MIT © ZHAO Xudong
 
 ## Credits
 
-All icons in this project are sourced from [vscode-icons](https://github.com/vscode-icons/vscode-icons), licensed under the [MIT License](https://github.com/vscode-icons/vscode-icons/blob/master/LICENSE).
+The file type icons are sourced from [vscode-icons](https://github.com/vscode-icons/vscode-icons), the connection icons from [SVG Logos](https://github.com/gilbarbara/logos) (via [@iconify-json/logos](https://icon-sets.iconify.design/logos/)) and a few generic glyphs from [Material Design Icons](https://pictogrammers.com/library/mdi/) (via [@iconify-json/mdi](https://icon-sets.iconify.design/mdi/)). Both icon sets are MIT licensed. All brand logos remain the trademarks of their owners and are used only to identify the corresponding software.
 
 ```
 Copyright (c) 2016-present Roberto Huertas
